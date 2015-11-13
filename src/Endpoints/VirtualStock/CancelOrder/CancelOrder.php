@@ -1,7 +1,9 @@
 <?php
 
 namespace DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder;
+use DixonsCz\Communicator\Adapter\AdapterInterface;
 use DixonsCz\Communicator\Endpoint\EndpointInterface;
+use DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder\CancelOrderResponse;
 
 class CancelOrder implements EndpointInterface
 {
@@ -15,30 +17,32 @@ class CancelOrder implements EndpointInterface
     }
 
     /**
-     * @param $array
+     * @param $params
      */
-    public function setParameters($array)
+    public function setParameters($params)
     {
-        // TODO: Implement setParameters() method.
+        $this->params = $params;
     }
 
     /**
-     * @param $data array
+     * @param $parmas array
      * @return boolean
      */
-    public function validateParameters($data = null)
+    public function validateParameters($params = null)
     {
         // TODO: Implement validateParameters() method.
         return true;
     }
 
     /**
+     * @param AdapterInterface $adapter
      * @return array
      */
-    public function execute()
+    public function execute(AdapterInterface $adapter)
     {
         //TODO: do HTTP request to VS
-        return new CancelOrderResponse(array('response'=>'response'));
+        $response = $adapter->request($this, $this->params);
+        return new CancelOrderResponse($response);
     }
 
     /**

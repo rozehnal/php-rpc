@@ -3,6 +3,8 @@
 namespace DixonsCz\Communicator\Endpoint;
 
 
+use DixonsCz\Communicator\Adapter\AdapterInterface;
+
 interface EndpointInterface
 {
 
@@ -13,19 +15,20 @@ interface EndpointInterface
 
 
     /**
-     * @param $array
+     * @param $params
      */
-    public function setParameters($array);
+    public function setParameters($params);
 
     /**
-     * @param $data array
+     * @param $params array
      * @return boolean
      */
-    public function validateParameters($data = null);
+    public function validateParameters($params = null);
 
     /**
+     * @param AdapterInterface $adapter
      * @return array
      */
-    public function execute();
+    public function execute(AdapterInterface $adapter);
 
 }

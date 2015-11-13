@@ -1,12 +1,19 @@
 <?php
 
-namespace DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder;
+namespace DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder;
 
 
 class CancelOrderResponse
 {
+    private $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
     public function getRawData()
     {
-        return array('rawdata' => 'rawdata');
+        return $this->data;
     }
 }
