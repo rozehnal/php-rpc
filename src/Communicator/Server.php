@@ -2,33 +2,33 @@
 
 namespace DixonsCz\Communicator;
 
-use DixonsCz\Communicator\Endpoint\EndpointInterface;
+use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Endpoints\EndpointInterface;
 
 class Server
 {
 
-    private $adapter = null;
+    private $adapter;
     private $endpoints = array();
 
-    public function __construct($adapter = null)
+    public function __construct(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }
 
 
-    public function register(EndpointInterface $endpoint, $callback, $name = null)
+    public function register(EndpointInterface $endpoint, $callback)
     {
-        if ($name === null) {
-            $name = $endpoint->getEndpointName();
-        }
-        $this->endpoints[$name] = array('endpoint' => $endpoint, 'callback' => $callback);
+        $name = $endpoint->getEndpointName();
 
+        $this->endpoints[$name] = array('endpoint' => $endpoint, 'callback' => $callback);
         return this;
     }
 
 
     public function get($name)
     {
+
         if (array_key_exists($name, $this->endpoints)) {
             return new EndpointWrapper($this->endpoints[$name]['endpoint'], $this->endpoints[$name]['callback'], $this->adapter);
         }else{

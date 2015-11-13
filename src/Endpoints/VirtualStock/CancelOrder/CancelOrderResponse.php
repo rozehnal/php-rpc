@@ -1,6 +1,6 @@
 <?php
 
-namespace DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder;
+namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
 
 
 class CancelOrderResponse

@@ -1,6 +1,6 @@
 <?php
 
-namespace DixonsCz\Communicator\Endpoint;
+namespace DixonsCz\Endpoints;
 
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
@@ -9,9 +9,14 @@ interface EndpointInterface
 {
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEndpointName();
+
+    /**
+     * @return string
+     */
+    public function getEndpointUri();
 
 
     /**

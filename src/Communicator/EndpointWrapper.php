@@ -5,7 +5,7 @@ namespace DixonsCz\Communicator;
 
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
-use DixonsCz\Communicator\Endpoint\EndpointInterface;
+use DixonsCz\Endpoints\EndpointInterface;
 
 class EndpointWrapper
 {
@@ -18,6 +18,7 @@ class EndpointWrapper
 
     public function __construct(EndpointInterface $endpoint, $callback, AdapterInterface $adapter)
     {
+
         $this->endpoint = $endpoint;
         $this->callback = $callback;
         $this->adapter = $adapter;
@@ -29,8 +30,10 @@ class EndpointWrapper
         }
         
         $this->endpoint->setParameters($params);
-        
-        return $this->adapter->response($this->callback($params)->getRawData());
+
+        $callback = $this->callback;
+        $response = $callback($params);
+        return $this->adapter->response($response->getRawData());
     }
 
 

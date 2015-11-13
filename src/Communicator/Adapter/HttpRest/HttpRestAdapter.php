@@ -13,14 +13,22 @@ class HttpRestAdapter implements AdapterInterface
         $this->serverLocation = $serverLocation;
     }
 
-    public function request(\DixonsCz\Communicator\Endpoint\EndpointInterface $endpoint, $params)
+    public function request(\DixonsCz\Endpoints\EndpointInterface $endpoint, $params)
     {
-        $endpointName = $this->serverLocation . '/' . $endpoint->getEndpointName();
-        var_dump($endpointName);
+        $uri = $endpoint->getEndpointUri();
 
-        $response = http_get($endpointName, array("timeout"=>1), $info);
-        $responseArray = json_decode($response);
-        return $responseArray;
+        foreach($params as $key => $value) {
+            $str = '{' . $key . '}';
+            if (strpos($uri, $str)) {
+                $uri = str_replace($str, $value, $uri);
+            }
+        }
+
+        $endpointName = $this->serverLocation . '/' . $uri;
+
+        $response = file_get_contents($endpointName . '?' . http_build_query($params));
+        $responseDecoded = json_decode($response, true);
+        return $responseDecoded;
     }
 
     public function response($data)

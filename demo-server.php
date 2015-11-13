@@ -1,17 +1,22 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
+use DixonsCz\Communicator\Adapter\HttpRest\HttpRestAdapter;
 use DixonsCz\Communicator\Server;
-use DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder\CancelOrder;
-use DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder\CancelOrderResponse;
+use DixonsCz\Endpoints\VirtualStock\CancelOrder\CancelOrder;
+use DixonsCz\Endpoints\VirtualStock\CancelOrder\CancelOrderResponse;
 
-$vsServer = new Server();
+$vsServer = new Server(new HttpRestAdapter('http://communicator.dev'));
 $vsServer->register(
     new CancelOrder(),
     function($params) {
         //do something clever
-        return new CancelOrderResponse($params);
+        $return = false;
+        if (isset($params['name'])) {
+            $return = $params['name'] . ' processed on server at ' . time();
+        }
+        return new CancelOrderResponse($return);
     }
 );
 
-$vsServer->get('cancelOrder')->process($_GET);
+echo($vsServer->get('cancelOrder')->process($_GET));

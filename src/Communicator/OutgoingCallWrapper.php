@@ -4,7 +4,7 @@ namespace DixonsCz\Communicator;
 
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
-use DixonsCz\Communicator\Endpoint\EndpointInterface;
+use DixonsCz\Endpoints\EndpointInterface;
 
 class OutgoingCallWrapper
 {
@@ -28,8 +28,13 @@ class OutgoingCallWrapper
 
     public function call($params = array())
     {
+
+        if (!$this->endpoint->validateParameters($params)) {
+            throw new \Exception('Not valid parameters!');
+        }
+
         $this->endpoint->setParameters($params);
-        $this->endpoint->validateParameters();
+
         return $this->endpoint->execute($this->adapter);
     }
 

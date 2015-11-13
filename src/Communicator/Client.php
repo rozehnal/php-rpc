@@ -2,25 +2,22 @@
 
 namespace DixonsCz\Communicator;
 
-use DixonsCz\Communicator\Adapter\HttpRest\HttpRestAdapter;
-use DixonsCz\Communicator\Endpoint\EndpointInterface;
+use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Endpoints\EndpointInterface;
 
 class Client
 {
-    private $adapter = null;
+    private $adapter;
     private $calls = array();
 
-    public function __construct($adapter = null)
+    public function __construct(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }
 
-    public function register(EndpointInterface $endpoint, $name = null)
+    public function register(EndpointInterface $endpoint)
     {
-        if ($name === null) {
-            $name = $endpoint->getEndpointName();
-        }
-        $this->calls[$name] = $endpoint;
+        $this->calls[$endpoint->getEndpointName()] = $endpoint;
     }
 
     public function get($name)

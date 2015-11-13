@@ -1,14 +1,14 @@
 <?php
 
-namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
+namespace DixonsCz\Endpoints\PeakClimber\Countries;
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
 
-class CancelOrder implements EndpointInterface
+class Countries implements EndpointInterface
 {
-    private $endpointName = "cancelOrder";
+    private $endpointName = "countries";
 
     private $params = array();
 
@@ -34,11 +34,12 @@ class CancelOrder implements EndpointInterface
      */
     public function validateParameters($params = null)
     {
+
         if ($params === null) {
             $params = $this->params;
         }
 
-        return isset($params['name']);
+        return isset($params['id']);
     }
 
     /**
@@ -48,7 +49,7 @@ class CancelOrder implements EndpointInterface
     public function execute(AdapterInterface $adapter)
     {
         $response = $adapter->request($this, $this->params);
-        return new CancelOrderResponse($response);
+        return new CountriesResponse($response);
     }
 
     /**
@@ -64,6 +65,6 @@ class CancelOrder implements EndpointInterface
      */
     public function getEndpointUri()
     {
-        return $this->endpointName;
+        return "countries/{id}.json";
     }
 }
