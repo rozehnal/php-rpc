@@ -27,7 +27,7 @@ class Communicator
     public function getOutgoingCall($name)
     {
         if (array_key_exists($name, $this->calls)) {
-            return new EndpointWrapper($this->endpoints[$name]);
+            return new OutgoingCallWrapper($this->endpoints[$name]);
         }else{
             throw new \Exception('Endpoint ' . $name . ' not found.');
         }
@@ -40,14 +40,16 @@ class Communicator
         if ($name === null) {
             $name = $endpoint->getEndpointName();
         }
-        $this->endpoints[$name] = $endpoint;
+        $this->endpoints[$name] = array('endpoint' => $endpoint, 'callback' => $callback);
+
+        return this;
     }
 
 
     public function getEndpoint($name)
     {
         if (array_key_exists($name, $this->endpoints)) {
-            return new EndpointWrapper($this->endpoints[$name]);
+            return new EndpointWrapper($this->endpoints[$name]['endpoint'], $this->endpoints[$name]['callback']);
         }else{
             throw new \Exception('Endpoint ' . $name . ' not found.');
         }

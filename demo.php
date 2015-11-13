@@ -2,11 +2,15 @@
 require __DIR__ . '/vendor/autoload.php';
 
 $vs = new \DixonsCz\Communicator\Communicator();
-$vs->registerOutgoingCall(new DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder\CancelOrder());
+$vs->registerOutgoingCall(new DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder\CancelOrder());
 $vs->registerEndpoint(
-    new DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder\CancelOrder(),
-    function(\DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder\CancelOrderResponse $response) { var_dump($response);}
+    new DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder\CancelOrder(),
+    function($params) {
+        return new \DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder\CancelOrderResponse();
+    }
 );
 
-$vs->getOutgoingCall('cancelOrder')->get(array('parameters'=>'parameters'));
 $vs->getEndpoint('cancelOrder')->process($_GET);
+
+
+var_dump($vs->getOutgoingCall('cancelOrder')->call(array('parameters'=>'parameters')));

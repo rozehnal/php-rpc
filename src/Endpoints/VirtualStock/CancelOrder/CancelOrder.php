@@ -1,10 +1,18 @@
 <?php
 
-namespace DixonsCz\Communicator\Endpoints\VirtualStock\Get\CancelOrder;
+namespace DixonsCz\Communicator\Endpoints\VirtualStock\CancelOrder;
 use DixonsCz\Communicator\Endpoint\EndpointInterface;
 
 class CancelOrder implements EndpointInterface
 {
+
+    var $params = array();
+
+
+    public function __construct()
+    {
+
+    }
 
     /**
      * @param $array

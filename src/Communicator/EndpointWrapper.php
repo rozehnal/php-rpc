@@ -9,16 +9,18 @@ use DixonsCz\Communicator\Endpoint\EndpointInterface;
 class EndpointWrapper
 {
     private $endpoint;
+    private $callback;
 
-    public function __construct(EndpointInterface $endpoint)
+    public function __construct(EndpointInterface $endpoint, $callback)
     {
         $this->endpoint = $endpoint;
+        $this->callback = $callback;
     }
 
     public function process($data) {
         $this->endpoint->setParameters($data);
         $this->endpoint->validateParameters();
-        $this->endpoint->execute();
+        return $this->callback($data);
     }
 
 
