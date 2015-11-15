@@ -11,13 +11,13 @@ class Server
     private $adapter;
     private $endpoints = array();
 
-    public function __construct(AdapterInterface $adapter)
+    public function __construct(AdapterInterface $adapter = null)
     {
         $this->adapter = $adapter;
     }
 
 
-    public function register(EndpointInterface $endpoint, $callback, $name = null)
+    public function register(EndpointInterface $endpoint, $callback = null, $name = null)
     {
         if (is_null($name)) {
             $name = $endpoint->getName();

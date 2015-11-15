@@ -2,7 +2,6 @@
 
 namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
 
-use DixonsCz\Communicator\Adapter\AdapterInterface;
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
@@ -10,11 +9,6 @@ use DixonsCz\Endpoints\EndpointInterface;
 class CancelOrder implements EndpointInterface
 {
     private $endpointName = "cancelOrder";
-
-    /**
-     * @var ParametersInterface
-     */
-    private $params;
 
 
     public function __construct($endpointname = null)
@@ -25,34 +19,23 @@ class CancelOrder implements EndpointInterface
     }
 
     /**
-     * @param $params
+     * @param ParametersInterface $params
+     * @return bool
      */
-    public function setParameters(ParametersInterface $params)
+    public function validateParameters(ParametersInterface $params)
     {
-        $this->params = $params;
+        return $params->isDefined('name');
     }
 
-    /**
-     * @param $parmas array
-     * @return boolean
-     */
-    public function validateParameters(ParametersInterface $params = null)
-    {
-        if ($params === null) {
-            $params = $this->params;
-        }
-
-        return $params->getParameter('name') != '';
-    }
 
     /**
-     * @param AdapterInterface $adapter
-     * @return array
+     * @param ParametersInterface|null $params
+     * @return void
+     * @throws \Exception
      */
-    public function execute(AdapterInterface $adapter)
+    public function execute(ParametersInterface $params = null)
     {
-        $response = $adapter->request($this, $this->params);
-        return new CancelOrderResponse($response);
+        throw new \Exception('Implementation is missing.');
     }
 
     /**

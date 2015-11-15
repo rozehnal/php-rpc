@@ -14,5 +14,8 @@
       "DixonsCz\\Communicator\\": "src/Communicator",
       "DixonsCz\\Endpoints\\": "src/Endpoints"
     }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "*"
   }
 }

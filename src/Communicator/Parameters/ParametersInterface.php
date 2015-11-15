@@ -13,6 +13,12 @@ interface ParametersInterface
     public function getParameter($key);
 
     /**
+     * @param $key string
+     * @return boolean
+     */
+    public function isDefined($key);
+
+    /**
      * @return array assoc
      */
     public function getArray();

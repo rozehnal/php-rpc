@@ -1,11 +1,11 @@
 <?php
 
-namespace DixonsCz\Communicator\Adapter\HttpRest;
+namespace DixonsCz\Communicator\Adapter\Http;
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 
-class HttpRestAdapter implements AdapterInterface
+class HttpAdapter implements AdapterInterface
 {
     private $serverLocation;
 
@@ -30,12 +30,12 @@ class HttpRestAdapter implements AdapterInterface
         echo sprintf("request: %s<br>",  $endpointName . '?' . http_build_query($params->getArray()));
 
         $response = file_get_contents($endpointName . '?' . http_build_query($params->getArray()));
-        $responseDecoded = json_decode($response, true);
+        $responseDecoded = unserialize($response);
         return $responseDecoded;
     }
 
     public function response($data)
     {
-        return json_encode($data);
+        return serialize($data);
     }
 }

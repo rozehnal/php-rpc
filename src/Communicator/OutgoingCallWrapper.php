@@ -34,9 +34,8 @@ class OutgoingCallWrapper
             throw new \Exception('Not valid parameters!');
         }
 
-        $this->endpoint->setParameters($params);
-
-        return $this->endpoint->execute($this->adapter);
+        $response = $this->adapter->request($this->endpoint, $params);
+        return $response;
     }
 
 }

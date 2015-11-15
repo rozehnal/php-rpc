@@ -7,17 +7,18 @@ class NativeParameters implements ParametersInterface{
     /**
      * @var array
      */
-    private $get;
+    private $parameters;
+
     /**
      * @var array
      */
-    private $post;
+    private $data;
 
-    public function __construct($get = array(), $post = array())
+    public function __construct($parameters = array(), $data = array())
     {
 
-        $this->get = $get;
-        $this->post = $post;
+        $this->parameters = $parameters;
+        $this->data = $data;
     }
 
 
@@ -29,7 +30,7 @@ class NativeParameters implements ParametersInterface{
      */
     public function getParameter($key)
     {
-        return $this->get[$key];
+        return $this->parameters[$key];
     }
 
 
@@ -43,9 +44,9 @@ class NativeParameters implements ParametersInterface{
     public function getContent($key = null)
     {
         if (is_null($key)){
-            return $this->post;
+            return $this->data;
         }else{
-            return $this->post[$key];
+            return $this->data[$key];
         }
 
     }
@@ -55,6 +56,15 @@ class NativeParameters implements ParametersInterface{
      */
     public function getArray()
     {
-        return $this->get;
+        return $this->parameters;
+    }
+
+    /**
+     * @param $key string
+     * @return boolean
+     */
+    public function isDefined($key)
+    {
+        return array_key_exists($key, $this->parameters);
     }
 }

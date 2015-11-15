@@ -2,7 +2,6 @@
 
 namespace DixonsCz\Endpoints\PeakClimber\Countries;
 
-use DixonsCz\Communicator\Adapter\AdapterInterface;
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
@@ -10,11 +9,6 @@ use DixonsCz\Endpoints\EndpointInterface;
 class Countries implements EndpointInterface
 {
     private $endpointName = "countries";
-
-    /**
-     * @var ParametersInterface
-     */
-    private $params;
 
 
     public function __construct($endpointname = null)
@@ -25,35 +19,24 @@ class Countries implements EndpointInterface
     }
 
     /**
-     * @param $params
+     * @param ParametersInterface $params
+     * @return bool
      */
-    public function setParameters(ParametersInterface $params)
+    public function validateParameters(ParametersInterface $params)
     {
-        $this->params = $params;
+        return $params->isDefined('id');
     }
 
     /**
-     * @param $parmas array
-     * @return boolean
+     * @param ParametersInterface|null $params
+     * @return CountriesResponse
      */
-    public function validateParameters(ParametersInterface $params = null)
+    public function execute(ParametersInterface $params = null)
     {
-
-        if ($params === null) {
-            $params = $this->params;
-        }
-
-        return $params->getParameter('id') != '';
-    }
-
-    /**
-     * @param AdapterInterface $adapter
-     * @return array
-     */
-    public function execute(AdapterInterface $adapter)
-    {
-        $response = $adapter->request($this, $this->params);
-        return new CountriesResponse($response);
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', sprintf('http://peakclimber.com/api/countries/%s.json', $params->getParameter('id')));
+        $resArr = json_decode($res->getBody(), true);
+        return new CountriesResponse($resArr);
     }
 
     /**
