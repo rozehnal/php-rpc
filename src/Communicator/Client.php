@@ -15,9 +15,14 @@ class Client
         $this->adapter = $adapter;
     }
 
-    public function register(EndpointInterface $endpoint)
+    public function register(EndpointInterface $endpoint, $name = null)
     {
-        $this->calls[$endpoint->getName()] = $endpoint;
+        if (is_null($name)) {
+            $name = $endpoint->getName();
+        }
+
+        $this->calls[$name] = $endpoint;
+        return $this;
     }
 
     public function get($name)

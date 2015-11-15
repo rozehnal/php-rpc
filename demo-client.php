@@ -21,10 +21,10 @@ echo "<hr>";
 
 
 $pkClient = new Client(new HttpRestAdapter('http://peakclimber.com/api'));
-$pkClient->register(new Countries());
+$pkClient->register(new Countries(), "aaa");
 
 /** @var \DixonsCz\Endpoints\PeakClimber\Countries\CountriesResponse $response */
-$response = $pkClient->get('countries')->dispatch(new NativeParameters(array('id'=>50)));
+$response = $pkClient->get('aaa')->dispatch(new NativeParameters(array('id'=>50)));
 
 
 var_dump($response->getName());
