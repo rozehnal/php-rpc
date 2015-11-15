@@ -3,17 +3,9 @@
 namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
 
 
-class CancelOrderResponse
+use DixonsCz\Endpoints\Response;
+
+class CancelOrderResponse extends Response
 {
-    private $data;
 
-    public function __construct($data)
-    {
-        $this->data = $data;
-    }
-
-    public function getRawData()
-    {
-        return $this->data;
-    }
 }

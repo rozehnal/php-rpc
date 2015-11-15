@@ -3,6 +3,7 @@
 namespace DixonsCz\Endpoints\PeakClimber\Countries;
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
 
@@ -10,7 +11,10 @@ class Countries implements EndpointInterface
 {
     private $endpointName = "countries";
 
-    private $params = array();
+    /**
+     * @var ParametersInterface
+     */
+    private $params;
 
 
     public function __construct($endpointname = null)
@@ -23,7 +27,7 @@ class Countries implements EndpointInterface
     /**
      * @param $params
      */
-    public function setParameters($params)
+    public function setParameters(ParametersInterface $params)
     {
         $this->params = $params;
     }
@@ -32,14 +36,14 @@ class Countries implements EndpointInterface
      * @param $parmas array
      * @return boolean
      */
-    public function validateParameters($params = null)
+    public function validateParameters(ParametersInterface $params = null)
     {
 
         if ($params === null) {
             $params = $this->params;
         }
 
-        return isset($params['id']);
+        return $params->getParameter('id') != '';
     }
 
     /**
@@ -55,7 +59,7 @@ class Countries implements EndpointInterface
     /**
      * @return mixed
      */
-    public function getEndpointName()
+    public function getName()
     {
         return $this->endpointName;
     }
@@ -63,8 +67,8 @@ class Countries implements EndpointInterface
     /**
      * @return string
      */
-    public function getEndpointUri()
+    public function getUri()
     {
-        return "countries/{id}.json";
+        return $this->endpointName . "/{id}.json";
     }
 }

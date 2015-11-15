@@ -4,6 +4,7 @@ namespace DixonsCz\Endpoints;
 
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Communicator\Parameters\ParametersInterface;
 
 interface EndpointInterface
 {
@@ -11,24 +12,24 @@ interface EndpointInterface
     /**
      * @return string
      */
-    public function getEndpointName();
+    public function getName();
 
     /**
      * @return string
      */
-    public function getEndpointUri();
+    public function getUri();
 
 
     /**
      * @param $params
      */
-    public function setParameters($params);
+    public function setParameters(ParametersInterface $params);
 
     /**
      * @param $params array
      * @return boolean
      */
-    public function validateParameters($params = null);
+    public function validateParameters(ParametersInterface $params = null);
 
     /**
      * @param AdapterInterface $adapter

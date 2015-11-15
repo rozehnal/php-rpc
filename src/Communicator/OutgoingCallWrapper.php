@@ -4,6 +4,7 @@ namespace DixonsCz\Communicator;
 
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
 class OutgoingCallWrapper
@@ -26,7 +27,7 @@ class OutgoingCallWrapper
     }
 
 
-    public function call($params = array())
+    public function dispatch(ParametersInterface $params)
     {
 
         if (!$this->endpoint->validateParameters($params)) {

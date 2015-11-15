@@ -3,20 +3,10 @@
 namespace DixonsCz\Endpoints\PeakClimber\Countries;
 
 
-class CountriesResponse
+use DixonsCz\Endpoints\Response;
+
+class CountriesResponse extends Response
 {
-    private $data;
-
-    public function __construct($data)
-    {
-        $this->data = $data;
-    }
-
-    public function getRawData()
-    {
-        return $this->data;
-    }
-
 
     public function getCreatedAt()
     {

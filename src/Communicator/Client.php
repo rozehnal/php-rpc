@@ -17,7 +17,7 @@ class Client
 
     public function register(EndpointInterface $endpoint)
     {
-        $this->calls[$endpoint->getEndpointName()] = $endpoint;
+        $this->calls[$endpoint->getName()] = $endpoint;
     }
 
     public function get($name)
@@ -25,7 +25,7 @@ class Client
         if (array_key_exists($name, $this->calls)) {
             return new OutgoingCallWrapper($this->calls[$name], $this->adapter);
         }else{
-            throw new \Exception('Endpoint ' . $name . ' not found.');
+            throw new \Exception(sprintf('Endpoint %s not found.', $name));
         }
     }
 

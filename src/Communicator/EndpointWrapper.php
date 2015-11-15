@@ -5,6 +5,7 @@ namespace DixonsCz\Communicator;
 
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
 class EndpointWrapper
@@ -24,7 +25,7 @@ class EndpointWrapper
         $this->adapter = $adapter;
     }
 
-    public function process($params) {
+    public function process(ParametersInterface $params) {
         if (!$this->endpoint->validateParameters($params)) {
             throw new \Exception('Not valid parameters!');
         }

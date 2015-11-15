@@ -3,6 +3,7 @@
 namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
 
 use DixonsCz\Communicator\Adapter\AdapterInterface;
+use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
 
@@ -10,7 +11,10 @@ class CancelOrder implements EndpointInterface
 {
     private $endpointName = "cancelOrder";
 
-    private $params = array();
+    /**
+     * @var ParametersInterface
+     */
+    private $params;
 
 
     public function __construct($endpointname = null)
@@ -23,7 +27,7 @@ class CancelOrder implements EndpointInterface
     /**
      * @param $params
      */
-    public function setParameters($params)
+    public function setParameters(ParametersInterface $params)
     {
         $this->params = $params;
     }
@@ -32,13 +36,13 @@ class CancelOrder implements EndpointInterface
      * @param $parmas array
      * @return boolean
      */
-    public function validateParameters($params = null)
+    public function validateParameters(ParametersInterface $params = null)
     {
         if ($params === null) {
             $params = $this->params;
         }
 
-        return isset($params['name']);
+        return $params->getParameter('name') != '';
     }
 
     /**
@@ -54,7 +58,7 @@ class CancelOrder implements EndpointInterface
     /**
      * @return mixed
      */
-    public function getEndpointName()
+    public function getName()
     {
         return $this->endpointName;
     }
@@ -62,7 +66,7 @@ class CancelOrder implements EndpointInterface
     /**
      * @return string
      */
-    public function getEndpointUri()
+    public function getUri()
     {
         return $this->endpointName;
     }

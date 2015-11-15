@@ -2,6 +2,7 @@
 
 namespace DixonsCz\Communicator\Adapter;
 
+use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
 
 interface AdapterInterface
@@ -11,7 +12,7 @@ interface AdapterInterface
      * @param $params
      * @return mixed
      */
-    public function request(EndpointInterface $endpoint, $params);
+    public function request(EndpointInterface $endpoint, ParametersInterface $params);
 
     public function response($data);
 

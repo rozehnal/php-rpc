@@ -19,10 +19,10 @@ class Server
 
     public function register(EndpointInterface $endpoint, $callback)
     {
-        $name = $endpoint->getEndpointName();
+        $name = $endpoint->getName();
 
         $this->endpoints[$name] = array('endpoint' => $endpoint, 'callback' => $callback);
-        return this;
+        return $this;
     }
 
 
@@ -32,7 +32,7 @@ class Server
         if (array_key_exists($name, $this->endpoints)) {
             return new EndpointWrapper($this->endpoints[$name]['endpoint'], $this->endpoints[$name]['callback'], $this->adapter);
         }else{
-            throw new \Exception('Endpoint ' . $name . ' not found.');
+            throw new \Exception(sprintf('Endpoint %s not found.', $name));
         }
     }
 
