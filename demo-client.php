@@ -9,11 +9,34 @@ use DixonsCz\Endpoints\PeakClimber\Countries\Countries;
 use DixonsCz\Endpoints\VirtualStock\CancelOrder\CancelOrder;
 
 
+
+
+
+
+
+$vs = new \DixonsCz\Endpoints\Biolib\Biolib('http://communicator.dev');
+$response = $vs->findname('elaphe');
+var_dump($response);
+
+
+
+
+
+
+
+
+
+
+
+
+echo "<hr>";
+
+
 $vsClient = new Client(new HttpAdapter('http://communicator.dev'));
-$vsClient->register(new CancelOrder('demo-server.php'));
+$vsClient->register(new CancelOrder('demo-server.php'), 'cancelorder');
 
 /** @var \DixonsCz\Endpoints\VirtualStock\CancelOrder\CancelOrderResponse $response */
-$response = $vsClient->get('demo-server.php')->dispatch(new NativeParameters(array('name' => 'this request has been')));
+$response = $vsClient->get('cancelorder')->dispatch(new NativeParameters(array('name' => 'this request has been')));
 var_dump($response);
 echo "<br />";
 var_dump($response->getRawData(), $response->test());
@@ -24,10 +47,10 @@ echo "<hr>";
 
 
 $pkClient = new Server();
-$pkClient->register(new Countries(), null, "customname");
+$pkClient->register(new Countries());
 
 /** @var \DixonsCz\Endpoints\PeakClimber\Countries\CountriesResponse $response */
-$response = $pkClient->get('customname')->execute(new NativeParameters(array('id' => 50)));
+$response = $pkClient->get('countries')->execute(new NativeParameters(array('id' => 50)));
 
 var_dump($response->getName());
 echo "<br />";
@@ -46,7 +69,7 @@ var_dump($response->getRawData());
 echo "<hr>";
 
 $biolibClient = new Client(new HttpAdapter('http://communicator.dev'));
-$biolibClient->register(new \DixonsCz\Endpoints\Biolib\FindName());
+$biolibClient->register(new \DixonsCz\Endpoints\Biolib\FindName(), 'findName');
 $response = $biolibClient->get('findName')->dispatch(new NativeParameters(array('name' => 'Python regius', 'auth' => '')));
 var_dump($response);
 echo "<br />";

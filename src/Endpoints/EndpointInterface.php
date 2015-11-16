@@ -24,10 +24,4 @@ interface EndpointInterface
      */
     public function validateParameters(ParametersInterface $params);
 
-    /**
-     * @param ParametersInterface $params = null
-     * @return array
-     */
-    public function execute(ParametersInterface $params = null);
-
 }

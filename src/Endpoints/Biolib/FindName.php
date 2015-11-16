@@ -4,10 +4,11 @@ namespace DixonsCz\Endpoints\Biolib;
 
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
+use DixonsCz\Endpoints\ExecutableEndpointInterface;
 use DixonsCz\Endpoints\Response;
 
 
-class FindName implements EndpointInterface
+class FindName implements EndpointInterface, ExecutableEndpointInterface
 {
     private $endpointName = "findName";
 

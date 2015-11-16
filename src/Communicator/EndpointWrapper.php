@@ -7,6 +7,7 @@ namespace DixonsCz\Communicator;
 use DixonsCz\Communicator\Adapter\AdapterInterface;
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
+use DixonsCz\Endpoints\ExecutableEndpointInterface;
 
 class EndpointWrapper
 {
@@ -37,7 +38,12 @@ class EndpointWrapper
         //$this->endpoint->setParameters($params);
 
         if (is_null($this->callback)) {
-            $response = $this->endpoint->execute($params);
+            if ($this->endpoint instanceof ExecutableEndpointInterface) {
+                $response = $this->endpoint->execute($params);
+            }else{
+                throw new \Exception(sprintf('Endpoint %s is not executable.', $this->endpoint->getName()));
+            }
+
         } else {
             $callback = $this->callback;
             $response = $callback($params);

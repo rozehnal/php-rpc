@@ -27,17 +27,6 @@ class CancelOrder implements EndpointInterface
         return $params->isDefined('name');
     }
 
-
-    /**
-     * @param ParametersInterface|null $params
-     * @return void
-     * @throws \Exception
-     */
-    public function execute(ParametersInterface $params = null)
-    {
-        throw new \Exception('Implementation is missing.');
-    }
-
     /**
      * @return mixed
      */

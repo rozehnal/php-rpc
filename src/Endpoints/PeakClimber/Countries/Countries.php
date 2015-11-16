@@ -4,9 +4,10 @@ namespace DixonsCz\Endpoints\PeakClimber\Countries;
 
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
+use DixonsCz\Endpoints\ExecutableEndpointInterface;
 
 
-class Countries implements EndpointInterface
+class Countries implements EndpointInterface, ExecutableEndpointInterface
 {
     private $endpointName = "countries";
 
