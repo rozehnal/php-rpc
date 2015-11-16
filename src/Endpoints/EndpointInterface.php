@@ -7,12 +7,6 @@ use DixonsCz\Communicator\Parameters\ParametersInterface;
 
 interface EndpointInterface
 {
-
-    /**
-     * @return string
-     */
-    public function getName();
-
     /**
      * @return string
      */

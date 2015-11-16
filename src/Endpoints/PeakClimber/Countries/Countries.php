@@ -9,8 +9,6 @@ use DixonsCz\Endpoints\ExecutableEndpointInterface;
 
 class Countries implements EndpointInterface, ExecutableEndpointInterface
 {
-    private $endpointName = "countries";
-
 
     public function __construct($endpointname = null)
     {
@@ -41,18 +39,10 @@ class Countries implements EndpointInterface, ExecutableEndpointInterface
     }
 
     /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->endpointName;
-    }
-
-    /**
      * @return string
      */
     public function getUri()
     {
-        return $this->endpointName . "/{id}.json";
+        return "countries";
     }
 }

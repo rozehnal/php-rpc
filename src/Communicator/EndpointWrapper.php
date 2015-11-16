@@ -35,13 +35,11 @@ class EndpointWrapper
             throw new \Exception('Not valid parameters!');
         }
 
-        //$this->endpoint->setParameters($params);
-
         if (is_null($this->callback)) {
             if ($this->endpoint instanceof ExecutableEndpointInterface) {
                 $response = $this->endpoint->execute($params);
             }else{
-                throw new \Exception(sprintf('Endpoint %s is not executable.', $this->endpoint->getName()));
+                throw new \Exception(sprintf('Endpoint %s is not executable.', $this->endpoint->getUri()));
             }
 
         } else {

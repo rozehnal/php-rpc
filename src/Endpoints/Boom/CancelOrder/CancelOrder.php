@@ -1,6 +1,6 @@
 <?php
 
-namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
+namespace DixonsCz\Endpoints\Boom\CancelOrder;
 
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;
@@ -8,8 +8,6 @@ use DixonsCz\Endpoints\EndpointInterface;
 
 class CancelOrder implements EndpointInterface
 {
-    private $endpointName = "cancelOrder";
-
 
     public function __construct($endpointname = null)
     {
@@ -28,18 +26,10 @@ class CancelOrder implements EndpointInterface
     }
 
     /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->endpointName;
-    }
-
-    /**
      * @return string
      */
     public function getUri()
     {
-        return $this->endpointName;
+        return 'cancelorder';
     }
 }

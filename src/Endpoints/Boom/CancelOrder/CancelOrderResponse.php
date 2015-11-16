@@ -1,6 +1,6 @@
 <?php
 
-namespace DixonsCz\Endpoints\VirtualStock\CancelOrder;
+namespace DixonsCz\Endpoints\Boom\CancelOrder;
 
 
 use DixonsCz\Endpoints\Response;

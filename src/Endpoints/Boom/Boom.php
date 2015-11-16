@@ -1,13 +1,13 @@
 <?php
-namespace DixonsCz\Endpoints\VirtualStock;
+namespace DixonsCz\Endpoints\Boom;
 
 use DixonsCz\Communicator\Adapter\Http\HttpAdapter;
 use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Endpoints\VirtualStock\CancelOrder\CancelOrder;
-use DixonsCz\Endpoints\VirtualStock\CancelOrder\CancelOrderResponse;
+use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrder;
+use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrderResponse;
 
-class VirtualStock
+class Boom
 {
     /**
      * @var Client
@@ -16,7 +16,7 @@ class VirtualStock
 
     public function __construct($destinationUrl)
     {
-        $this->client = new Client(new HttpAdapter($destinationUrl));
+        $this->client = new Client(new HttpAdapter($destinationUrl . '/boom.php?service=#ENDPOINTNAME#&#PARAMS#'));
         $this->client->register(new CancelOrder(), 'cancelOrder');
     }
 

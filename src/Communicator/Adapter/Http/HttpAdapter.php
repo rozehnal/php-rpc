@@ -9,7 +9,7 @@ class HttpAdapter implements AdapterInterface
 {
     private $serverLocation;
 
-    public function __construct($serverLocation)
+    public function __construct($serverLocation = null)
     {
         $this->serverLocation = $serverLocation;
     }
@@ -18,18 +18,21 @@ class HttpAdapter implements AdapterInterface
     {
         $uri = $endpoint->getUri();
 
-        foreach($params->getArray() as $key => $value) {
+        /*foreach($params->getArray() as $key => $value) {
             $str = '{' . $key . '}';
             if (strpos($uri, $str)) {
                 $uri = str_replace($str, $value, $uri);
             }
-        }
+        }*/
 
-        $endpointName = $this->serverLocation . '/' . $uri;
+        $endpointURI = $this->serverLocation;
+        $endpointURI = str_replace('#ENDPOINTNAME#', $uri, $endpointURI);
+        $endpointURI = str_replace('#PARAMS#', http_build_query($params->getArray()), $endpointURI);
 
-        echo sprintf("request: %s<br>",  $endpointName . '?' . http_build_query($params->getArray()));
 
-        $response = file_get_contents($endpointName . '?' . http_build_query($params->getArray()));
+        echo sprintf("request: %s<br>", $endpointURI);
+
+        $response = file_get_contents($endpointURI);
         $responseDecoded = unserialize($response);
         return $responseDecoded;
     }

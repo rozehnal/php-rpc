@@ -17,12 +17,8 @@ class Server
     }
 
 
-    public function register(EndpointInterface $endpoint, $callback = null, $name = null)
+    public function register(EndpointInterface $endpoint, $name, $callback = null)
     {
-        if (is_null($name)) {
-            $name = $endpoint->getName();
-        }
-
         $this->endpoints[$name] = array('endpoint' => $endpoint, 'callback' => $callback);
         return $this;
     }

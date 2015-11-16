@@ -1,23 +1,22 @@
 <?php
 namespace DixonsCz\Endpoints\PeakClimber;
 
-use DixonsCz\Communicator\Adapter\Http\HttpAdapter;
-use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
+use DixonsCz\Communicator\Server;
 use DixonsCz\Endpoints\PeakClimber\Countries\Countries;
 use DixonsCz\Endpoints\PeakClimber\Countries\CountriesResponse;
 
 class PeakClimber
 {
     /**
-     * @var Client
+     * @var Server
      */
-    private $client;
+    private $server;
 
-    public function __construct($destinationUrl)
+    public function __construct()
     {
-        $this->client = new Client(new HttpAdapter($destinationUrl));
-        $this->client->register(new Countries(), 'countries');
+        $this->server = new Server();
+        $this->server->register(new Countries(), 'countries');
     }
 
     /**
@@ -27,7 +26,7 @@ class PeakClimber
      */
     public function countries($id)
     {
-        return $this->client->get('countries')->dispatch(new NativeParameters(array('id' => $id)));
+        return $this->server->get('countries')->execute(new NativeParameters(array('id' => $id)));
     }
 
 }

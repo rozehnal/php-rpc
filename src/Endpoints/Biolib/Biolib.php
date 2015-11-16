@@ -1,22 +1,21 @@
 <?php
 namespace DixonsCz\Endpoints\Biolib;
 
-use DixonsCz\Communicator\Adapter\Http\HttpAdapter;
-use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
+use DixonsCz\Communicator\Server;
 use DixonsCz\Endpoints\Response;
 
 class Biolib
 {
     /**
-     * @var Client
+     * @var Server
      */
-    private $client;
+    private $server;
 
-    public function __construct($destinationUrl)
+    public function __construct()
     {
-        $this->client = new Client(new HttpAdapter($destinationUrl));
-        $this->client->register(new FindName(), 'findname');
+        $this->server = new Server();
+        $this->server->register(new FindName(), 'findname');
     }
 
     /**
@@ -27,7 +26,7 @@ class Biolib
      */
     public function findname($name, $auth = '')
     {
-        return $this->client->get('findname')->dispatch(new NativeParameters(array('name' => $name, 'auth' => $auth)));
+        return $this->server->get('findname')->execute(new NativeParameters(array('name' => $name, 'auth' => $auth)));
     }
 
 }

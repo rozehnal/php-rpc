@@ -10,8 +10,6 @@ use DixonsCz\Endpoints\Response;
 
 class FindName implements EndpointInterface, ExecutableEndpointInterface
 {
-    private $endpointName = "findName";
-
 
     public function __construct($endpointname = null)
     {
@@ -57,18 +55,10 @@ class FindName implements EndpointInterface, ExecutableEndpointInterface
     }
 
     /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->endpointName;
-    }
-
-    /**
      * @return string
      */
     public function getUri()
     {
-        return 'findname.php';
+        return 'findname';
     }
 }
