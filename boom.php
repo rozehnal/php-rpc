@@ -1,13 +1,13 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use DixonsCz\Communicator\Adapter\Http\HttpAdapter;
+use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
 use DixonsCz\Communicator\Parameters\NativeParameters;
 use DixonsCz\Communicator\Server;
 use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrder;
 use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrderResponse;
 
-$vsServer = new Server(new HttpAdapter());
+$vsServer = new Server(new JsonAdapter());
 $vsServer->register(
     new CancelOrder(),
     'cancelorder',

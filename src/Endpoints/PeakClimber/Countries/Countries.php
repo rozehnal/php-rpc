@@ -10,13 +10,6 @@ use DixonsCz\Endpoints\ExecutableEndpointInterface;
 class Countries implements EndpointInterface, ExecutableEndpointInterface
 {
 
-    public function __construct($endpointname = null)
-    {
-        if ($endpointname !== null) {
-            $this->endpointName = $endpointname;
-        }
-    }
-
     /**
      * @param ParametersInterface $params
      * @return bool

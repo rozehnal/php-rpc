@@ -1,7 +1,7 @@
 <?php
 namespace DixonsCz\Endpoints\Boom;
 
-use DixonsCz\Communicator\Adapter\Http\HttpAdapter;
+use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
 use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
 use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrder;
@@ -16,7 +16,7 @@ class Boom
 
     public function __construct($destinationUrl)
     {
-        $this->client = new Client(new HttpAdapter($destinationUrl . '/boom.php?service=#ENDPOINTNAME#&#PARAMS#'));
+        $this->client = new Client(new JsonAdapter($destinationUrl . '/boom.php?service=#ENDPOINTNAME#&#PARAMS#'));
         $this->client->register(new CancelOrder(), 'cancelOrder');
     }
 

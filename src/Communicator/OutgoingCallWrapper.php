@@ -35,6 +35,9 @@ class OutgoingCallWrapper
         }
 
         $response = $this->adapter->request($this->endpoint, $params);
+        if ($response instanceof \Exception) {
+            throw $response;
+        }
         return $response;
     }
 

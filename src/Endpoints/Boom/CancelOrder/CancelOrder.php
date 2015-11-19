@@ -9,13 +9,6 @@ use DixonsCz\Endpoints\EndpointInterface;
 class CancelOrder implements EndpointInterface
 {
 
-    public function __construct($endpointname = null)
-    {
-        if ($endpointname !== null) {
-            $this->endpointName = $endpointname;
-        }
-    }
-
     /**
      * @param ParametersInterface $params
      * @return bool

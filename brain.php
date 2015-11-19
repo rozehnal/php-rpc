@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use DixonsCz\Communicator\Adapter\Http\HttpAdapter;
+use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
 use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
 
@@ -27,9 +27,17 @@ var_dump($response);
 
 echo "<hr><h3>proxy of thirdparty [over biolib.php]</h3>";
 
-$biolibClient = new Client(new HttpAdapter('http://communicator.dev' . '/biolib.php?service=#ENDPOINTNAME#&#PARAMS#'));
+try {
+
+    $biolibClient = new Client(new JsonAdapter('http://communicator.dev' . '/biolib.php?service=#ENDPOINTNAME#&#PARAMS#'));
 $biolibClient->register(new \DixonsCz\Endpoints\Biolib\FindName(), 'findName');
 $response = $biolibClient->get('findName')->dispatch(new NativeParameters(array('name' => 'Python regius', 'auth' => '')));
 var_dump($response);
+
+} catch (\Exception $e) {
+    var_dump('exception: ' . $e->getMessage());
+}
+
+
 echo "<br />";
 //var_dump($response->getRawData());
