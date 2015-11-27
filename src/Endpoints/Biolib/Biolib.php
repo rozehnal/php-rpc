@@ -1,9 +1,10 @@
 <?php
-namespace DixonsCz\Endpoints\Biolib;
+namespace Paro\Endpoints\Biolib;
 
-use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Communicator\Server;
-use DixonsCz\Endpoints\Response;
+use Paro\Communicator\Parameters\NativeParameters;
+use Paro\Communicator\Server;
+use Paro\Endpoints\Biolib\FindName\FindName;
+use Paro\Endpoints\Response;
 
 class Biolib
 {

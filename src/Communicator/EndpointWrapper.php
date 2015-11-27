@@ -1,13 +1,13 @@
 <?php
 
 
-namespace DixonsCz\Communicator;
+namespace Paro\Communicator;
 
 
-use DixonsCz\Communicator\Adapter\AdapterInterface;
-use DixonsCz\Communicator\Parameters\ParametersInterface;
-use DixonsCz\Endpoints\EndpointInterface;
-use DixonsCz\Endpoints\ExecutableEndpointInterface;
+use Paro\Communicator\Adapter\AdapterInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
+use Paro\Endpoints\EndpointInterface;
+use Paro\Endpoints\ExecutableEndpointInterface;
 
 class EndpointWrapper
 {

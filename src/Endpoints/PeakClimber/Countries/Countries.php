@@ -1,10 +1,10 @@
 <?php
 
-namespace DixonsCz\Endpoints\PeakClimber\Countries;
+namespace Paro\Endpoints\PeakClimber\Countries;
 
-use DixonsCz\Communicator\Parameters\ParametersInterface;
-use DixonsCz\Endpoints\EndpointInterface;
-use DixonsCz\Endpoints\ExecutableEndpointInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
+use Paro\Endpoints\EndpointInterface;
+use Paro\Endpoints\ExecutableEndpointInterface;
 
 
 class Countries implements EndpointInterface, ExecutableEndpointInterface

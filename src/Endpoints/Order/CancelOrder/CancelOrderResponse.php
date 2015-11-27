@@ -1,9 +1,9 @@
 <?php
 
-namespace DixonsCz\Endpoints\Order\CancelOrder;
+namespace Paro\Endpoints\Order\CancelOrder;
 
 
-use DixonsCz\Endpoints\Response;
+use Paro\Endpoints\Response;
 
 class CancelOrderResponse extends Response
 {

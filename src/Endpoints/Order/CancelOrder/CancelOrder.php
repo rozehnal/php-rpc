@@ -1,9 +1,9 @@
 <?php
 
-namespace DixonsCz\Endpoints\Order\CancelOrder;
+namespace Paro\Endpoints\Order\CancelOrder;
 
-use DixonsCz\Communicator\Parameters\ParametersInterface;
-use DixonsCz\Endpoints\EndpointInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
+use Paro\Endpoints\EndpointInterface;
 
 
 class CancelOrder implements EndpointInterface

@@ -1,9 +1,9 @@
 <?php
 
-namespace DixonsCz\Communicator;
+namespace Paro\Communicator;
 
-use DixonsCz\Communicator\Adapter\AdapterInterface;
-use DixonsCz\Endpoints\EndpointInterface;
+use Paro\Communicator\Adapter\AdapterInterface;
+use Paro\Endpoints\EndpointInterface;
 
 class Client
 {

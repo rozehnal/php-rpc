@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DixonsCz\Communicator\Parameters;
+namespace Paro\Communicator\Parameters;
 
 
 interface ParametersInterface

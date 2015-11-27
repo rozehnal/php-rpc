@@ -1,11 +1,11 @@
 <?php
-namespace DixonsCz\Endpoints\Order;
+namespace Paro\Endpoints\Order;
 
-use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
-use DixonsCz\Communicator\Client;
-use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Endpoints\Order\CancelOrder\CancelOrder;
-use DixonsCz\Endpoints\Order\CancelOrder\CancelOrderResponse;
+use Paro\Communicator\Adapter\Json\JsonAdapter;
+use Paro\Communicator\Client;
+use Paro\Communicator\Parameters\NativeParameters;
+use Paro\Endpoints\Order\CancelOrder\CancelOrder;
+use Paro\Endpoints\Order\CancelOrder\CancelOrderResponse;
 
 class Order
 {

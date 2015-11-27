@@ -1,11 +1,11 @@
 <?php
 
-namespace DixonsCz\Endpoints\Biolib;
+namespace Paro\Endpoints\Biolib\FindName;
 
-use DixonsCz\Communicator\Parameters\ParametersInterface;
-use DixonsCz\Endpoints\EndpointInterface;
-use DixonsCz\Endpoints\ExecutableEndpointInterface;
-use DixonsCz\Endpoints\Response;
+use Paro\Communicator\Parameters\ParametersInterface;
+use Paro\Endpoints\EndpointInterface;
+use Paro\Endpoints\ExecutableEndpointInterface;
+use Paro\Endpoints\Response;
 
 
 class FindName implements EndpointInterface, ExecutableEndpointInterface
@@ -30,17 +30,10 @@ class FindName implements EndpointInterface, ExecutableEndpointInterface
     {
 
         $soapClient = new \SoapClient("http://www.biolib.cz/soap/findname.wsdl", array('trace' => 1));
-        ini_set("soap.wsdl_cache_enabled", "0");
         try {
             ;
             $result = $soapClient->findName($params->getParameter('name'), $params->getParameter('auth'));
-
-            //foreach ($result as $res) {
-            //echo '<a href="http://www.biolib.cz/cz/taxon/id'.$res['taxonid'].'/">'.$res['validname'].'</a> '.$res['validauthority'].'<br />';
-            //print_r($res);
-            //}
         } catch (\SoapFault $fault) {
-            //var_dump($fault);
             throw $fault;
         }
 

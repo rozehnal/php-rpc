@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DixonsCz\Endpoints;
+namespace Paro\Endpoints;
 
 
 interface ResponseInterface

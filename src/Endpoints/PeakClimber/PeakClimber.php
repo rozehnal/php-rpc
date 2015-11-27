@@ -1,10 +1,10 @@
 <?php
-namespace DixonsCz\Endpoints\PeakClimber;
+namespace Paro\Endpoints\PeakClimber;
 
-use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Communicator\Server;
-use DixonsCz\Endpoints\PeakClimber\Countries\Countries;
-use DixonsCz\Endpoints\PeakClimber\Countries\CountriesResponse;
+use Paro\Communicator\Parameters\NativeParameters;
+use Paro\Communicator\Server;
+use Paro\Endpoints\PeakClimber\Countries\Countries;
+use Paro\Endpoints\PeakClimber\Countries\CountriesResponse;
 
 class PeakClimber
 {

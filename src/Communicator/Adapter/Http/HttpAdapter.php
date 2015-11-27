@@ -1,9 +1,9 @@
 <?php
 
-namespace DixonsCz\Communicator\Adapter\Http;
+namespace Paro\Communicator\Adapter\Http;
 
-use DixonsCz\Communicator\Adapter\AdapterInterface;
-use DixonsCz\Communicator\Parameters\ParametersInterface;
+use Paro\Communicator\Adapter\AdapterInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
 
 class HttpAdapter implements AdapterInterface
 {
@@ -14,7 +14,7 @@ class HttpAdapter implements AdapterInterface
         $this->serverLocation = $serverLocation;
     }
 
-    public function request(\DixonsCz\Endpoints\EndpointInterface $endpoint, ParametersInterface $params)
+    public function request(\Paro\Endpoints\EndpointInterface $endpoint, ParametersInterface $params)
     {
         $uri = $endpoint->getUri();
 

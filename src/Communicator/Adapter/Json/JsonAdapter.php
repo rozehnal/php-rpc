@@ -1,10 +1,10 @@
 <?php
 
-namespace DixonsCz\Communicator\Adapter\Json;
+namespace Paro\Communicator\Adapter\Json;
 
-use DixonsCz\Communicator\Adapter\AdapterInterface;
-use DixonsCz\Communicator\Parameters\ParametersInterface;
-use DixonsCz\Endpoints\Response;
+use Paro\Communicator\Adapter\AdapterInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
+use Paro\Endpoints\Response;
 
 class JsonAdapter implements AdapterInterface
 {
@@ -15,7 +15,7 @@ class JsonAdapter implements AdapterInterface
         $this->serverLocation = $serverLocation;
     }
 
-    public function request(\DixonsCz\Endpoints\EndpointInterface $endpoint, ParametersInterface $params)
+    public function request(\Paro\Endpoints\EndpointInterface $endpoint, ParametersInterface $params)
     {
         $uri = $endpoint->getUri();
 

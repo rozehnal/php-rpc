@@ -1,17 +1,17 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
-use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Communicator\Server;
+use Paro\Communicator\Adapter\Json\JsonAdapter;
+use Paro\Communicator\Parameters\NativeParameters;
+use Paro\Communicator\Server;
 
 $vsServer = new Server(new JsonAdapter());
 $vsServer->register(
-    new \DixonsCz\Endpoints\Biolib\FindName(),
+    new \Paro\Endpoints\Biolib\FindName\FindName(),
     'findname',
-    function (\DixonsCz\Communicator\Parameters\ParametersInterface $params) {
+    function (\Paro\Communicator\Parameters\ParametersInterface $params) {
         throw new Exception('error on the server');
-        return new \DixonsCz\Endpoints\Response('aaaa');
+        return new \Paro\Endpoints\Response('aaaa');
     }
 );
 

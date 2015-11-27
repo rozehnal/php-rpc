@@ -1,9 +1,9 @@
 <?php
 
-namespace DixonsCz\Communicator\Adapter;
+namespace Paro\Communicator\Adapter;
 
-use DixonsCz\Communicator\Parameters\ParametersInterface;
-use DixonsCz\Endpoints\EndpointInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
+use Paro\Endpoints\EndpointInterface;
 
 interface AdapterInterface
 {

@@ -11,8 +11,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "DixonsCz\\Communicator\\": "src/Communicator",
-      "DixonsCz\\Endpoints\\": "src/Endpoints"
+      "Paro\\Communicator\\": "src/Communicator",
+      "Paro\\Endpoints\\": "src/Endpoints"
     }
   },
   "require": {

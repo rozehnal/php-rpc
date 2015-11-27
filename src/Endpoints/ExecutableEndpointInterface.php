@@ -1,10 +1,10 @@
 <?php
 
 
-namespace DixonsCz\Endpoints;
+namespace Paro\Endpoints;
 
 
-use DixonsCz\Communicator\Parameters\ParametersInterface;
+use Paro\Communicator\Parameters\ParametersInterface;
 
 interface ExecutableEndpointInterface
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DixonsCz\Communicator\Parameters;
+namespace Paro\Communicator\Parameters;
 
 class NativeParameters implements ParametersInterface{
     /**

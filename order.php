@@ -1,17 +1,17 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
-use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Communicator\Server;
-use DixonsCz\Endpoints\Order\CancelOrder\CancelOrder;
-use DixonsCz\Endpoints\Order\CancelOrder\CancelOrderResponse;
+use Paro\Communicator\Adapter\Json\JsonAdapter;
+use Paro\Communicator\Parameters\NativeParameters;
+use Paro\Communicator\Server;
+use Paro\Endpoints\Order\CancelOrder\CancelOrder;
+use Paro\Endpoints\Order\CancelOrder\CancelOrderResponse;
 
 $vsServer = new Server(new JsonAdapter());
 $vsServer->register(
     new CancelOrder(),
     'cancelorder',
-    function(\DixonsCz\Communicator\Parameters\ParametersInterface $params) {
+    function (\Paro\Communicator\Parameters\ParametersInterface $params) {
         //do something clever
         $return = false;
         if ($params->isDefined('name')) {
@@ -21,5 +21,4 @@ $vsServer->register(
     }
 );
 
-//echo($vsServer->get('cancelorder')->execute(new NativeParameters($_GET, $_POST)));
 echo($vsServer->get($_GET['service'])->execute(new NativeParameters($_GET, $_POST)));

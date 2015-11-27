@@ -1,9 +1,9 @@
 <?php
 
-namespace DixonsCz\Endpoints\PeakClimber\Countries;
+namespace Paro\Endpoints\PeakClimber\Countries;
 
 
-use DixonsCz\Endpoints\Response;
+use Paro\Endpoints\Response;
 
 class CountriesResponse extends Response
 {
