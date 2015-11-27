@@ -1,6 +1,6 @@
 <?php
 
-namespace DixonsCz\Endpoints\Boom\CancelOrder;
+namespace DixonsCz\Endpoints\Order\CancelOrder;
 
 use DixonsCz\Communicator\Parameters\ParametersInterface;
 use DixonsCz\Endpoints\EndpointInterface;

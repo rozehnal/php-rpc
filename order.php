@@ -4,8 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
 use DixonsCz\Communicator\Parameters\NativeParameters;
 use DixonsCz\Communicator\Server;
-use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrder;
-use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrderResponse;
+use DixonsCz\Endpoints\Order\CancelOrder\CancelOrder;
+use DixonsCz\Endpoints\Order\CancelOrder\CancelOrderResponse;
 
 $vsServer = new Server(new JsonAdapter());
 $vsServer->register(

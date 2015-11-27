@@ -6,10 +6,10 @@ use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
 
 
-echo "<hr><h3>boom</h3>";
+echo "<hr><h3>order</h3>";
 
-$boom = new \DixonsCz\Endpoints\Boom\Boom('http://communicator.dev');
-$response = $boom->cancelOrder('ordernumberaaa');
+$order = new \DixonsCz\Endpoints\Order\Order('http://communicator.dev');
+$response = $order->cancelOrder('ordernumberaaa');
 var_dump($response, $response->test());
 
 

@@ -1,13 +1,13 @@
 <?php
-namespace DixonsCz\Endpoints\Boom;
+namespace DixonsCz\Endpoints\Order;
 
 use DixonsCz\Communicator\Adapter\Json\JsonAdapter;
 use DixonsCz\Communicator\Client;
 use DixonsCz\Communicator\Parameters\NativeParameters;
-use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrder;
-use DixonsCz\Endpoints\Boom\CancelOrder\CancelOrderResponse;
+use DixonsCz\Endpoints\Order\CancelOrder\CancelOrder;
+use DixonsCz\Endpoints\Order\CancelOrder\CancelOrderResponse;
 
-class Boom
+class Order
 {
     /**
      * @var Client
@@ -16,7 +16,7 @@ class Boom
 
     public function __construct($destinationUrl)
     {
-        $this->client = new Client(new JsonAdapter($destinationUrl . '/boom.php?service=#ENDPOINTNAME#&#PARAMS#'));
+        $this->client = new Client(new JsonAdapter($destinationUrl . '/order.php?service=#ENDPOINTNAME#&#PARAMS#'));
         $this->client->register(new CancelOrder(), 'cancelOrder');
     }
 
