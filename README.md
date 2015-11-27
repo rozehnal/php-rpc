@@ -15,7 +15,6 @@ Benefits
 - each collection of endpoints should have
     - own namespace
     - own facade - e.g. \Endpoints\Biolib\Biolib
-- each endpoint should have own namespace (and folder)
 - each endpoint must implement EndpointInterface (and ExecutableEndpointInterface in case of third party encapsulation)
 
 # General usage
