@@ -1,13 +1,13 @@
 # About
 
-The project is a pure &amp; simple implementation of RPC (Remote procedure calls) in php.
+The project is a pure &amp; simple implementation of RPC (Remote Procedure Call) in php.
 
-The goal is to provide a library that is compatible with every framework and environment and provide good encapsulation 
+The goal is to provide a library which is compatible with every framework and environment and provide good encapsulation 
 of your communication's interfaces between your or third party systems. This library has great support for mocking.
 
 Benefits
 - communication protocol (e.g. json, xml, ..) is located at one place - in adpters. see \Paro\Communicator\Adapter\...
-- handling + transferring exceptions from client to server
+- handling + transferring exceptions from server to client
 - very good encapsulation of responses - each response can have own response class easily
 
 # How to implement own endpoints?
