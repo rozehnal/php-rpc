@@ -1,6 +1,6 @@
 {
-  "name": "vendor_name/package_name",
-  "description": "description_text",
+  "name": "dixonscz/communicator",
+  "description": "rpc communicator",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
